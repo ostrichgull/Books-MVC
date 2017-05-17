@@ -1,0 +1,50 @@
+﻿@using Books.Models
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Books App</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Books", "Index", "Books", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Genres", "Index", "Genres")</li>
+                    <li>@Html.ActionLink("Authors", "Index", "Persons", new { typeId = (int)PersonTypeValue.Author }, null)</li>
+                    <li>@Html.ActionLink("Patrons", "Index", "Persons", new { typeId = (int)PersonTypeValue.Patron }, null)</li>
+                    <li>@Html.ActionLink("Person Types", "Index", "PersonTypes")</li>
+                    <li>@Html.ActionLink("Genders", "Index", "Genders")</li>
+                    <li>@Html.ActionLink("Countries", "Index", "Countries")</li>
+                    <li>@Html.ActionLink("States", "Index", "States")</li>
+                    <li>@Html.ActionLink("Cities", "Index", "Cities")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Library Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript" src="~/Scripts/books.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
